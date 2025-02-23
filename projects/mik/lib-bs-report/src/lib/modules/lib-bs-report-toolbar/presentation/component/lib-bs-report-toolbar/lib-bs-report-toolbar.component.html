@@ -1,0 +1,30 @@
+<div>
+  <p-toolbar>
+    <div style="gap: 10px;" class="d-inline-flex flex-wrap me-2 w-100" role="group">
+      <button pButton icon="pi pi-refresh" label="Обновить"  class="btn btn-primary"
+              (click)="onClickRefresh()">
+      </button>
+
+      <button pButton label="Экспорт отчёта в Excel" (click)="onClickExportDataToExcel()"
+              class="btn btn-primary">
+      </button>
+
+      <button pButton label="Опция отчёта" (click)="onClickOffcanvasOptions()"
+              class="btn btn-primary">
+      </button>
+
+      <div style="margin-left: auto;display: flex;flex-direction: row;gap: 2px; align-items: center;">
+        <div>
+          Просмотр отчётов по состоянию на:
+        </div>
+        <div>
+          <dx-select-box #selectFinYearCollege
+                         displayExpr="displayDate" valueExpr="date" placeholder="Выберите дату"
+                         (onSelectionChanged)="onSelectionChangedDateReport($event)" [dataSource]="reportDates"
+                         class="ui-button-info toolbar-item-btn" style="margin: 0">
+          </dx-select-box>
+        </div>
+      </div>
+    </div>
+  </p-toolbar>
+</div>

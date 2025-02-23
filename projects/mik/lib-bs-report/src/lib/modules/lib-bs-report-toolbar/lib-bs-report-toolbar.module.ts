@@ -1,9 +1,14 @@
 import {NgModule} from "@angular/core";
+import {LibBsReportToolbarPresentationModule} from "./presentation/lib-bs-report-toolbar-presentation.module";
 
 @NgModule({
-  imports: [],
+  imports: [
+    LibBsReportToolbarPresentationModule
+  ],
   declarations: [],
-  exports: [],
+  exports: [
+    LibBsReportToolbarPresentationModule
+  ],
   providers: []
 })
 export class LibBsReportToolbarModule {}

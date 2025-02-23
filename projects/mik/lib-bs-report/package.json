@@ -1,12 +1,19 @@
 {
-  "name": "@mik/lib-bs-report",
-  "version": "0.0.1",
+  "name": "@404-mik-404/lib-bs-report",
+  "version": "0.0.2",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/404-MIK-404/BsHubReportLibrary.git"
+  },
   "peerDependencies": {
     "@angular/common": "^15.2.0",
     "@angular/core": "^15.2.0"
   },
   "dependencies": {
     "tslib": "^2.3.0"
+  },
+  "publishConfig": {
+    "registry": "https://npm.pkg.github.com/"
   },
   "sideEffects": false
 }

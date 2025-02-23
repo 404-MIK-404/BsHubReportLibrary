@@ -1,0 +1,64 @@
+
+<div class="h-100 d-flex flex-column">
+  <div class="offcanvas-header">
+    <h4 class="offcanvas-title">Опция отчёта</h4>
+    <button type="button" class="btn-close" aria-label="Закрыть"
+            (click)="onClickCloseOffcanvas()">
+    </button>
+  </div>
+
+  <div class="offcanvas-body p-0 bg-warning flex-grow-1">
+    <div class="overflow-y-auto">
+      <dx-tab-panel [width]="'100%'" [height]="'100%'" [selectedIndex]="selectedIndex"
+                    (onSelectionChanged)="onTabChangedOption($event)">
+        <dxi-item title="Опций отчёта">
+          <div *dxTemplate>
+            <dx-data-grid width="100%" height="100%" [dataSource]="dataGridOptions[0].data"
+                          [columns]="dataGridOptions[0].columns"
+                          [columnMinWidth]="50" [wordWrapEnabled]="true"
+                          [columnResizingMode]="'widget'" [columnAutoWidth]="true"
+                          [showBorders]="true">
+
+              <dxo-scrolling  showScrollbar="always" mode="virtual"></dxo-scrolling>
+              <dxo-column-fixing [enabled]="true"></dxo-column-fixing>
+              <dxo-sorting mode="single"></dxo-sorting>
+              <dxo-load-panel [enabled]="true"> </dxo-load-panel>
+              <dxo-group-panel [visible]="false"></dxo-group-panel>
+              <dxo-selection mode="single"></dxo-selection>
+              <dxo-filter-row [visible]="true"></dxo-filter-row>
+              <dxo-header-filter [visible]="true"></dxo-header-filter>
+
+            </dx-data-grid>
+          </div>
+        </dxi-item>
+        <dxi-item title="Расширенные опций">
+          <div *dxTemplate>
+            <dx-data-grid width="100%" height="100%" [dataSource]="dataGridOptions[1].data"
+                          [columns]="dataGridOptions[1].columns"
+                          [columnMinWidth]="50" [wordWrapEnabled]="true"
+                          [columnResizingMode]="'widget'" [columnAutoWidth]="true"
+                          [showBorders]="true">
+
+              <dxo-scrolling  showScrollbar="always" mode="virtual"></dxo-scrolling>
+              <dxo-column-fixing [enabled]="true"></dxo-column-fixing>
+              <dxo-sorting mode="single"></dxo-sorting>
+              <dxo-load-panel [enabled]="true"> </dxo-load-panel>
+              <dxo-group-panel [visible]="false"></dxo-group-panel>
+              <dxo-selection mode="single"></dxo-selection>
+              <dxo-filter-row [visible]="true"></dxo-filter-row>
+              <dxo-header-filter [visible]="true"></dxo-header-filter>
+
+            </dx-data-grid>
+          </div>
+        </dxi-item>
+      </dx-tab-panel>
+    </div>
+  </div>
+  <div class="p-3 d-flex flex-column">
+    <div>
+      <button pButton label="Закрыть" (click)="onClickCloseOffcanvas()"
+              class="btn btn-primary">
+      </button>
+    </div>
+  </div>
+</div>

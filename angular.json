@@ -3,5 +3,38 @@
   "version": 1,
   "newProjectRoot": "projects",
   "projects": {
+    "@mik/lib-bs-report": {
+      "projectType": "library",
+      "root": "projects/mik/lib-bs-report",
+      "sourceRoot": "projects/mik/lib-bs-report/src",
+      "prefix": "lib-bs",
+      "architect": {
+        "build": {
+          "builder": "@angular-devkit/build-angular:ng-packagr",
+          "options": {
+            "project": "projects/mik/lib-bs-report/ng-package.json"
+          },
+          "configurations": {
+            "production": {
+              "tsConfig": "projects/mik/lib-bs-report/tsconfig.lib.prod.json"
+            },
+            "development": {
+              "tsConfig": "projects/mik/lib-bs-report/tsconfig.lib.json"
+            }
+          },
+          "defaultConfiguration": "production"
+        },
+        "test": {
+          "builder": "@angular-devkit/build-angular:karma",
+          "options": {
+            "tsConfig": "projects/mik/lib-bs-report/tsconfig.spec.json",
+            "polyfills": [
+              "zone.js",
+              "zone.js/testing"
+            ]
+          }
+        }
+      }
+    }
   }
 }

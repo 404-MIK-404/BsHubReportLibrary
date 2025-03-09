@@ -13,7 +13,7 @@ export class LibBsReportService {
 
   public onClickRefreshButton$: Subject<void> = new Subject<void>();
 
-  public loadColumnReport$: Subject<DevExpress.ui.dxDataGrid.Column> = new Subject<any>()
+  public loadColumnReport$: Subject<DevExpress.ui.dxDataGrid.Column[]> = new Subject<any>()
 
   public loadReportDates$: Subject<BsReportDateModel[]> = new Subject<BsReportDateModel[]>()
 
@@ -22,7 +22,7 @@ export class LibBsReportService {
   constructor() {}
 
 
-  public onLoadColumnReport(columns: DevExpress.ui.dxDataGrid.Column): void {
+  public onLoadColumnReport(columns: DevExpress.ui.dxDataGrid.Column[]): void {
     this.loadColumnReport$.next(columns)
   }
 

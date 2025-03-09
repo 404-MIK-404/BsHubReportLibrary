@@ -6,7 +6,7 @@ import {LibBsReportToolbarViewModel} from "../../viewmodel/lib-bs-report-toolbar
 import {LibBsReportService} from "../../../../../lib-bs-report.service";
 import {
   LibBsReportOptionsOffcanvasComponent
-} from "../../../../lib-bs-report-options-offcanvas/presentation/component/component/lib-bs-report-options-offcanvas/lib-bs-report-options-offcanvas.component";
+} from "../../../../lib-bs-report-options-offcanvas/presentation/component/lib-bs-report-options-offcanvas/lib-bs-report-options-offcanvas.component";
 
 @Component({
   selector: 'lib-bs-report-toolbar',

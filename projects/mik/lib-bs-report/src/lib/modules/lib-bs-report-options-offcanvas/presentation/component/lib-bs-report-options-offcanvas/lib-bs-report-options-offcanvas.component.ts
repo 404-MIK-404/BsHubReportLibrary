@@ -1,9 +1,9 @@
 import {Component, OnDestroy, OnInit} from "@angular/core";
 import {Subscription} from "rxjs";
-import {reportOptionColumn} from "../../../../domain/column/report-option.column";
-import {reportAdvancedOptionColumn} from "../../../../domain/column/report-advanced-option-column";
+import {reportOptionColumn} from "../../../domain/column/report-option.column";
+import {reportAdvancedOptionColumn} from "../../../domain/column/report-advanced-option-column";
 import {NgbActiveOffcanvas} from "@ng-bootstrap/ng-bootstrap";
-import {BsReportConfigDataGridModel} from "../../../../../../core/module/bs-report-config-data-grid.model";
+import {BsReportConfigDataGridModel} from "../../../../../core/module/bs-report-config-data-grid.model";
 
 @Component({
   selector: 'lib-bsreport-options-offcanvas',

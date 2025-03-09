@@ -8,7 +8,7 @@ import DevExpress from "devextreme";
 })
 export class LibBsReportToolbarViewModel {
 
-  public loadColumnsOptionDataGrid$: Subject<DevExpress.ui.dxDataGrid.Column> = new Subject()
+  public loadColumnsOptionDataGrid$: Subject<DevExpress.ui.dxDataGrid.Column[]> = new Subject()
 
   constructor() {}
 

@@ -1,14 +1,11 @@
 import { Component } from '@angular/core';
 
 @Component({
-  selector: 'lib-bs-lib-bs-report',
+  selector: 'lib-bs-report',
   template: `
-    <p>
-      lib-bs-report works!
-    </p>
+    <lib-bs-report-toolbar></lib-bs-report-toolbar>
   `,
-  styles: [
-  ]
+  styles: []
 })
 export class LibBsReportComponent {
 

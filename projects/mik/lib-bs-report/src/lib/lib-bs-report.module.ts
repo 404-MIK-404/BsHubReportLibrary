@@ -1,6 +1,7 @@
 import { NgModule } from '@angular/core';
 import { LibBsReportComponent } from './lib-bs-report.component';
 import {LibBsReportToolbarModule} from "./modules/lib-bs-report-toolbar/lib-bs-report-toolbar.module";
+import {BrowserAnimationsModule} from "@angular/platform-browser/animations";
 
 
 
@@ -12,7 +13,7 @@ import {LibBsReportToolbarModule} from "./modules/lib-bs-report-toolbar/lib-bs-r
     LibBsReportToolbarModule
   ],
   exports: [
-    LibBsReportComponent
+    LibBsReportComponent,
   ]
 })
 export class LibBsReportModule { }

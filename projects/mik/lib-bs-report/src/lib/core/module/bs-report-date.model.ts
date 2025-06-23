@@ -2,5 +2,5 @@
 
 export interface BsReportDateModel {
   date: string,
-  displayDate: string,
+  display: string,
 }

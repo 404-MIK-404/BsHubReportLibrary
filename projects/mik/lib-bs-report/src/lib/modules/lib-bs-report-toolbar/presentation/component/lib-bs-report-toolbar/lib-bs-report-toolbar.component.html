@@ -1,3 +1,5 @@
+<p-toast position="top-right" key="tl" />
+
 <div>
   <p-toolbar>
     <div class="row g-2 flex-grow-1">
@@ -16,12 +18,11 @@
       </div>
       <div class="col-md-2">
         <div class="form-floating">
-          <select class="form-select" id="floatingSelectGrid">
+          <select (change)="onSelectionChangedDateReport($event)" class="form-select" id="floatingSelectGrid">
             <option selected disabled value="">Выберите дату</option>
-            <option>1 сентября 2000 г.</option>
-            <option>1 октября 2000 г.</option>
-            <option>1 ноября 2000 г.</option>
-            <option>1 декабря 2000 г.</option>
+            <option *ngFor="let dateReport of dateReports">
+              {{ dateReport.display }}
+            </option>
           </select>
           <label class="w-100" for="floatingSelectGrid">Просмотр отчётов по состоянию на:</label>
         </div>

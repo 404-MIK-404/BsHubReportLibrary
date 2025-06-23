@@ -7,54 +7,73 @@ import {LibBsReportService} from "../../../../../lib-bs-report.service";
 import {
   LibBsReportOptionsOffcanvasComponent
 } from "../../../../lib-bs-report-options-offcanvas/presentation/component/lib-bs-report-options-offcanvas/lib-bs-report-options-offcanvas.component";
+import {MessageService} from "primeng/api";
 
 @Component({
   selector: 'lib-bs-report-toolbar',
   templateUrl: 'lib-bs-report-toolbar.component.html',
-  styleUrls: ['lib-bs-report-toolbar.component.html']
+  styleUrls: ['lib-bs-report-toolbar.component.css']
 })
 export class LibBsReportToolbarComponent implements OnInit, OnDestroy{
 
-  public reportDates: BsReportDateModel[] = [
+  public dateReports: BsReportDateModel[] = [
     {
-      displayDate: '1 сентября 2000 г.',
+      display: '1 сентября 2000 г.',
       date: '01-09-2000'
     },
     {
-      displayDate: '1 августа 2000 г.',
+      display: '1 августа 2000 г.',
       date: '01-08-2000'
+    },
+    {
+      display: '1 октября 2000 г.',
+      date: '01-10-2000'
+    },
+    {
+      display: '1 ноября 2000 г.',
+      date: '01-11-2000'
+    },
+    {
+      display: '1 декабря 2000 г.',
+      date: '01-12-2000'
     }
-  ]
+  ];
 
   private events: Subscription = new Subscription();
 
   constructor(private offcanvasService: NgbOffcanvas,
               private libBsReportToolbarViewModel: LibBsReportToolbarViewModel,
-              private libBsReportService: LibBsReportService) {
+              private libBsReportService: LibBsReportService,
+              private messageService: MessageService) {
   }
 
   public ngOnDestroy(): void {
+    this.libBsReportService.destroy()
   }
 
   public ngOnInit(): void {
-    this.events.add(this.libBsReportService.loadReportDates$.subscribe(reportDates=>{
-      this.reportDates = reportDates
+    this.events.add(this.libBsReportService.onLoadDataReports$.subscribe(reports=>{
+      console.log(reports)
     }))
-    this.events.add(this.libBsReportService.loadColumnReport$.subscribe(columns=>{
-      this.libBsReportToolbarViewModel.loadColumnsOptionDataGrid$.next(columns)
+    this.events.add(this.libBsReportService.onLoadOptions$.subscribe(options=>{
+      console.log(options)
     }))
   }
 
+
   public onSelectionChangedDateReport(event: any): void {
-    this.libBsReportService.onLoadSelectReportDate(event.selectedItem)
+    const selectElement = event.target as HTMLSelectElement;
+    const selectedIndexValue = selectElement.selectedIndex;
+    this.messageService.add({ severity: 'info', summary: 'Info Message', detail: 'Message Content', key: 'tl', life: 3000 });
+    this.libBsReportService.emitSelectDataReport(this.dateReports[selectedIndexValue])
   }
 
   public onClickRefresh(): void {
-    this.libBsReportService.onClickRefreshButton$.next(undefined)
+    this.libBsReportService.emitRefreshButton();
   }
 
   public onClickExportDataToExcel(): void {
-    this.libBsReportService.onClickConvertExcelButton$.next(undefined)
+    //this.libBsReportService.onClickConvertExcelButton$.next(undefined)
   }
 
   public onClickOffcanvasOptions(){

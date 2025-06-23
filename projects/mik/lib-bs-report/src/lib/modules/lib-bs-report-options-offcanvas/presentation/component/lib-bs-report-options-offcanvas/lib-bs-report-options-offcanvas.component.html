@@ -7,55 +7,51 @@
     </button>
   </div>
 
-  <div class="offcanvas-body p-0 bg-warning flex-grow-1">
+  <div class="offcanvas-body p-0 flex-grow-1">
     <div class="overflow-y-auto">
-      <dx-tab-panel [width]="'100%'" [height]="'100%'" [selectedIndex]="selectedIndex"
-                    (onSelectionChanged)="onTabChangedOption($event)">
-        <dxi-item title="Опций отчёта">
-          <div *dxTemplate>
-            <dx-data-grid width="100%" height="100%" [dataSource]="dataGridOptions[0].data"
-                          [columns]="dataGridOptions[0].columns"
-                          [columnMinWidth]="50" [wordWrapEnabled]="true"
-                          [columnResizingMode]="'widget'" [columnAutoWidth]="true"
-                          [showBorders]="true">
-
-              <dxo-scrolling  showScrollbar="always" mode="virtual"></dxo-scrolling>
-              <dxo-column-fixing [enabled]="true"></dxo-column-fixing>
-              <dxo-sorting mode="single"></dxo-sorting>
-              <dxo-load-panel [enabled]="true"> </dxo-load-panel>
-              <dxo-group-panel [visible]="false"></dxo-group-panel>
-              <dxo-selection mode="single"></dxo-selection>
-              <dxo-filter-row [visible]="true"></dxo-filter-row>
-              <dxo-header-filter [visible]="true"></dxo-header-filter>
-
-            </dx-data-grid>
-          </div>
-        </dxi-item>
-        <dxi-item title="Расширенные опций">
-          <div *dxTemplate>
-            <dx-data-grid width="100%" height="100%" [dataSource]="dataGridOptions[1].data"
-                          [columns]="dataGridOptions[1].columns"
-                          [columnMinWidth]="50" [wordWrapEnabled]="true"
-                          [columnResizingMode]="'widget'" [columnAutoWidth]="true"
-                          [showBorders]="true">
-
-              <dxo-scrolling  showScrollbar="always" mode="virtual"></dxo-scrolling>
-              <dxo-column-fixing [enabled]="true"></dxo-column-fixing>
-              <dxo-sorting mode="single"></dxo-sorting>
-              <dxo-load-panel [enabled]="true"> </dxo-load-panel>
-              <dxo-group-panel [visible]="false"></dxo-group-panel>
-              <dxo-selection mode="single"></dxo-selection>
-              <dxo-filter-row [visible]="true"></dxo-filter-row>
-              <dxo-header-filter [visible]="true"></dxo-header-filter>
-
-            </dx-data-grid>
-          </div>
-        </dxi-item>
-      </dx-tab-panel>
+      <p-tabView [scrollable]="true">
+        <p-tabPanel header="Состав документа и критерии отбора">
+          <p-table>
+            <ng-template pTemplate="header" let-columns>
+              <tr>
+                <th>Наименование опций</th>
+                <th>Значение</th>
+              </tr>
+            </ng-template>
+            <ng-template pTemplate="body" let-report>
+              <tr>
+                <td>{{ report.name }}</td>
+                <td>{{ report.price }}</td>
+              </tr>
+            </ng-template>
+          </p-table>
+        </p-tabPanel>
+        <p-tabPanel header="Расширенные опций">
+          <p-table>
+            <ng-template pTemplate="header" let-columns>
+              <tr>
+                <th>Наименование</th>
+                <th>Видимость</th>
+              </tr>
+            </ng-template>
+            <ng-template pTemplate="body" let-report>
+              <tr>
+                <td>{{ report.name }}</td>
+                <td>{{ report.price }}</td>
+              </tr>
+            </ng-template>
+          </p-table>
+        </p-tabPanel>
+      </p-tabView>
     </div>
   </div>
   <div class="p-3 d-flex flex-column">
-    <div>
+    <div style="gap: 10px;" class="d-flex flex-row g-1">
+
+      <button pButton style="font-size:medium"
+              label="По умолчанию" class="btn btn-primary">
+      </button>
+
       <button pButton label="Закрыть" (click)="onClickCloseOffcanvas()"
               class="btn btn-primary">
       </button>

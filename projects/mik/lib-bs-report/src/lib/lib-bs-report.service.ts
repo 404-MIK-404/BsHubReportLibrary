@@ -1,37 +1,50 @@
 import { Injectable } from '@angular/core';
-import {Subject} from "rxjs";
+import {Observable, Subject} from "rxjs";
 import {BsReportDateModel} from "./core/module/bs-report-date.model";
-import DevExpress from "devextreme";
-
 @Injectable({
   providedIn: 'root'
 })
 export class LibBsReportService {
 
+  private onLoadOptionsSubject = new Subject<any>();
 
-  public onClickConvertExcelButton$: Subject<void> = new Subject<void>();
+  public readonly onLoadOptions$: Observable<any> = this.onLoadOptionsSubject.asObservable();
 
-  public onClickRefreshButton$: Subject<void> = new Subject<void>();
+  private onLoadDataReportsSubject: Subject<BsReportDateModel[]> = new Subject<BsReportDateModel[]>()
 
-  public loadColumnReport$: Subject<DevExpress.ui.dxDataGrid.Column[]> = new Subject<any>()
+  public readonly onLoadDataReports$: Observable<BsReportDateModel[]> = this.onLoadDataReportsSubject.asObservable();
 
-  public loadReportDates$: Subject<BsReportDateModel[]> = new Subject<BsReportDateModel[]>()
+  private eventOnClickRefreshSubject: Subject<void> = new Subject<void>()
 
-  public onChangedSelectionReportDate$: Subject<BsReportDateModel> = new Subject<BsReportDateModel>()
+  public readonly eventOnClickRefresh$: Observable<void> = this.eventOnClickRefreshSubject.asObservable();
+
+  private eventSelectDataReportSubject: Subject<BsReportDateModel> = new Subject<BsReportDateModel>();
+
+  public readonly eventSelectDataReport$: Observable<BsReportDateModel> = this.eventSelectDataReportSubject.asObservable();
 
   constructor() {}
 
-
-  public onLoadColumnReport(columns: DevExpress.ui.dxDataGrid.Column[]): void {
-    this.loadColumnReport$.next(columns)
+  public emitLoadOptions(options: any): void {
+    this.onLoadOptionsSubject.next(options);
   }
 
-  public onLoadDateReport(reportDates: BsReportDateModel[]): void{
-    this.loadReportDates$.next(reportDates)
+  public emitLoadDataReports(reports: BsReportDateModel[]): void {
+    this.onLoadDataReportsSubject.next(reports);
   }
 
-  public onLoadSelectReportDate(reportDate: BsReportDateModel) : void {
-    this.onChangedSelectionReportDate$.next(reportDate)
+  public emitRefreshButton(): void {
+    this.eventOnClickRefreshSubject.next();
+  }
+
+  public emitSelectDataReport(report: BsReportDateModel): void {
+    this.eventSelectDataReportSubject.next(report);
+  }
+
+  public destroy(): void {
+    this.onLoadOptionsSubject.complete();
+    this.onLoadDataReportsSubject.complete();
+    this.eventOnClickRefreshSubject.complete();
+    this.eventSelectDataReportSubject.complete();
   }
 
 }

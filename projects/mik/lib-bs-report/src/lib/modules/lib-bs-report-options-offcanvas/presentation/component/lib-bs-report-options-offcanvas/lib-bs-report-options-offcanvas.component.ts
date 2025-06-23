@@ -16,6 +16,7 @@ export class LibBsReportOptionsOffcanvasComponent implements OnInit, OnDestroy {
 
   public selectedIndex: number = 0;
 
+  /*
   public dataGridOptions: BsReportConfigDataGridModel[] = [
     {
       data: [],
@@ -26,6 +27,8 @@ export class LibBsReportOptionsOffcanvasComponent implements OnInit, OnDestroy {
       columns: reportAdvancedOptionColumn,
     },
   ]
+
+   */
 
   constructor(private activeOffcanvas: NgbActiveOffcanvas) {}
 

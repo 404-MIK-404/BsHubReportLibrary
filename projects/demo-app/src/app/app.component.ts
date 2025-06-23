@@ -12,6 +12,7 @@ import {
   LibBsReportToolbarModule
 } from "../../../mik/lib-bs-report/src/lib/modules/lib-bs-report-toolbar/lib-bs-report-toolbar.module";
 import {BrowserAnimationsModule, NoopAnimationsModule} from "@angular/platform-browser/animations";
+import {LibBsReportService} from "../../../mik/lib-bs-report/src/lib/lib-bs-report.service";
 
 @Component({
   selector: 'app-root',
@@ -71,10 +72,16 @@ export class AppComponent implements OnInit, OnDestroy {
     },
   ]
 
-  constructor() {}
+  constructor(private libBsReportService: LibBsReportService) {}
 
 
   public ngOnInit(): void  {
+    this.event.add(this.libBsReportService.eventOnClickRefresh$.subscribe(()=>{
+      console.log("Клик кнопки обновы !")
+    }))
+    this.event.add(this.libBsReportService.eventSelectDataReport$.subscribe(selectDateReport=>{
+      console.log("Дата отчёта: ", selectDateReport)
+    }))
   }
 
   public ngOnDestroy(): void {

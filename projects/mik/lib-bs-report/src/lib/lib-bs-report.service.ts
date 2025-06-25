@@ -1,6 +1,7 @@
 import { Injectable } from '@angular/core';
 import {Observable, Subject} from "rxjs";
 import {BsReportDateModel} from "./core/module/bs-report-date.model";
+import {BsReportDataModel} from "./core/module/bs-report-data.model";
 @Injectable({
   providedIn: 'root'
 })
@@ -22,6 +23,10 @@ export class LibBsReportService {
 
   public readonly eventSelectDataReport$: Observable<BsReportDateModel> = this.eventSelectDataReportSubject.asObservable();
 
+  private onLoadDataAndHeadersSubject: Subject<BsReportDataModel> = new Subject<BsReportDataModel>();
+
+  public readonly onLoadDataAndHeader$: Observable<BsReportDataModel> = this.onLoadDataAndHeadersSubject.asObservable();
+
   constructor() {}
 
   public emitLoadOptions(options: any): void {
@@ -30,6 +35,10 @@ export class LibBsReportService {
 
   public emitLoadDataReports(reports: BsReportDateModel[]): void {
     this.onLoadDataReportsSubject.next(reports);
+  }
+
+  public emitLoadDataAndHeader(data: BsReportDataModel): void {
+    this.onLoadDataAndHeadersSubject.next(data)
   }
 
   public emitRefreshButton(): void {
@@ -45,6 +54,7 @@ export class LibBsReportService {
     this.onLoadDataReportsSubject.complete();
     this.eventOnClickRefreshSubject.complete();
     this.eventSelectDataReportSubject.complete();
+    this.onLoadDataAndHeadersSubject.complete();
   }
 
 }

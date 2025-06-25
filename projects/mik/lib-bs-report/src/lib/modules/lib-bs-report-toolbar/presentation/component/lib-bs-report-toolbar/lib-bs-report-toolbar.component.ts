@@ -8,6 +8,7 @@ import {
   LibBsReportOptionsOffcanvasComponent
 } from "../../../../lib-bs-report-options-offcanvas/presentation/component/lib-bs-report-options-offcanvas/lib-bs-report-options-offcanvas.component";
 import {MessageService} from "primeng/api";
+import {BsReportDataModel} from "../../../../../core/module/bs-report-data.model";
 
 @Component({
   selector: 'lib-bs-report-toolbar',
@@ -39,12 +40,24 @@ export class LibBsReportToolbarComponent implements OnInit, OnDestroy{
     }
   ];
 
+  public dataTable: BsReportDataModel = {
+    data: [],
+    headers: []
+  };
+
   private events: Subscription = new Subscription();
 
   constructor(private offcanvasService: NgbOffcanvas,
               private libBsReportToolbarViewModel: LibBsReportToolbarViewModel,
               private libBsReportService: LibBsReportService,
               private messageService: MessageService) {
+    /*
+    this.events.add(this.libBsReportService.onLoadDataAndHeader$.subscribe(table=>{
+      this.dataTable = table
+      console.log(table)
+    }))
+
+     */
   }
 
   public ngOnDestroy(): void {
@@ -53,6 +66,7 @@ export class LibBsReportToolbarComponent implements OnInit, OnDestroy{
 
   public ngOnInit(): void {
     this.events.add(this.libBsReportService.onLoadDataReports$.subscribe(reports=>{
+      this.dateReports = reports
       console.log(reports)
     }))
     this.events.add(this.libBsReportService.onLoadOptions$.subscribe(options=>{

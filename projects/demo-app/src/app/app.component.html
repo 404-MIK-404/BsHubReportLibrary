@@ -4,11 +4,12 @@
 
 <lib-bs-report></lib-bs-report>
 
-<p-table lib-bs-report-table-directive
-         styleClass="p-datatable-gridlines" >
+<p-table lib-bs-report-table-directive [scrollable]="true" scrollHeight="400px"
+         styleClass="p-datatable-gridlines mt-3" columnResizeMode="expand">
   <ng-template pTemplate="header">
     <tr>
-      <th [pSortableColumn]="col.value" style="width:20%" *ngFor="let col of appModelTable.headers">
+      <th [pSortableColumn]="col.value" pFrozenColumn [frozen]="true"
+          style="width:20%" *ngFor="let col of appModelTable.headers">
         {{ col.display }} <p-sortIcon [field]="col.value" />
       </th>
     </tr>

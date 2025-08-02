@@ -1,6 +1,10 @@
 import {Component, OnDestroy, OnInit} from "@angular/core";
 import {Subscription} from "rxjs";
 import {NgbActiveOffcanvas} from "@ng-bootstrap/ng-bootstrap";
+import {BsReportDataModel} from "../../../../../core/model/bs-report-data.model";
+import {LibBsReportStorageService} from "../../../../../core/service/lib-bs-report-storage.service";
+import {reportAdvancedOptionColumn} from "../../../domain/column/report-advanced-option-column";
+import {reportOptionColumn} from "../../../domain/column/report-option.column";
 
 @Component({
   selector: 'lib-bsreport-options-offcanvas',
@@ -13,27 +17,28 @@ export class LibBsReportOptionsOffcanvasComponent implements OnInit, OnDestroy {
 
   public selectedIndex: number = 0;
 
-  /*
-  public dataGridOptions: BsReportConfigDataGridModel[] = [
-    {
+  public dataTableOptions: BsReportDataModel[] = [{
       data: [],
-      columns: reportOptionColumn,
-    },
-    {
+      headers: reportAdvancedOptionColumn
+    }, {
       data: [],
-      columns: reportAdvancedOptionColumn,
-    },
+      headers: reportOptionColumn
+    }
   ]
 
-   */
-
-  constructor(private activeOffcanvas: NgbActiveOffcanvas) {}
+  constructor(private activeOffcanvas: NgbActiveOffcanvas,
+              private libBsReportStorageService: LibBsReportStorageService) {}
 
   public ngOnDestroy(): void {
     this.events.unsubscribe()
   }
 
   public ngOnInit(): void {
+    let datas = this.libBsReportStorageService.getDataAndHeadersToStorage();
+    this.dataTableOptions[1].data = datas?.headers.map(value => {
+      console.log(value)
+      return {name: value.display, filter: undefined, isFixed: value.fixed, isVisible: value.visible,isEditable: value.editable}
+    }) ?? []
   }
 
   public onTabChangedOption(e: any) {
@@ -45,6 +50,10 @@ export class LibBsReportOptionsOffcanvasComponent implements OnInit, OnDestroy {
     this.activeOffcanvas.dismiss('');
   }
 
+   public test(tdf: any): string {
+      console.log(Object.keys(tdf))
+     return 'testing';
+   }
 
 
 }

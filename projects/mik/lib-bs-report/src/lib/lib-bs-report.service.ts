@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import {Observable, Subject} from "rxjs";
-import {BsReportDateModel} from "./core/module/bs-report-date.model";
-import {BsReportDataModel} from "./core/module/bs-report-data.model";
+import {BsReportDateModel} from "./core/model/bs-report-date.model";
+import {BsReportDataModel} from "./core/model/bs-report-data.model";
 @Injectable({
   providedIn: 'root'
 })

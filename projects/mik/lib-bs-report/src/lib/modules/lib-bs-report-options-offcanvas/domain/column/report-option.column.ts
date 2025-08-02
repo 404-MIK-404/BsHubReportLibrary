@@ -1,25 +1,24 @@
-import {Column} from "devextreme/ui/data_grid";
+import {BsReportHeader, BsReportHeaderModel} from "../../../../core/model/bs-report-header.model";
 
-export const reportOptionColumn : Column[] = [
+export const reportOptionColumn : BsReportHeaderModel[] = BsReportHeader.init([
   {
-    dataField: 'name',
-    caption: 'Наименование',
-    dataType: 'string',
-    allowEditing: false,
+    value: 'name',
+    display: 'Наименование',
   },
   {
-    dataField: 'filter',
-    caption: 'Поиск',
-    allowEditing: true,
-  },
-  {
-    dataField: 'isFixed',
-    caption: 'Зафиксировать',
-    dataType: 'boolean',
-  },
-  {
-    dataField: 'isVisible',
-    caption: 'Видимость',
-    dataType: 'boolean'
+    value: 'filter',
+    display: 'Поиск по значению',
+    type: "string",
+    editable: true,
+  }, {
+    value: 'isFixed',
+    display: 'Зафиксировать',
+    type: "boolean",
+    editable: true
+  }, {
+    value: 'isVisible',
+    display: 'Видимость',
+    type: "boolean",
+    editable: true,
   }
-]
+])

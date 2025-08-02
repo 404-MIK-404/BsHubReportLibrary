@@ -1,14 +1,14 @@
 import {Component, OnDestroy, OnInit} from "@angular/core";
 import {Subscription} from "rxjs";
 import {NgbOffcanvas} from "@ng-bootstrap/ng-bootstrap";
-import {BsReportDateModel} from "../../../../../core/module/bs-report-date.model";
+import {BsReportDateModel} from "../../../../../core/model/bs-report-date.model";
 import {LibBsReportToolbarViewModel} from "../../viewmodel/lib-bs-report-toolbar.viewmodel";
 import {LibBsReportService} from "../../../../../lib-bs-report.service";
 import {
   LibBsReportOptionsOffcanvasComponent
 } from "../../../../lib-bs-report-options-offcanvas/presentation/component/lib-bs-report-options-offcanvas/lib-bs-report-options-offcanvas.component";
 import {MessageService} from "primeng/api";
-import {BsReportDataModel} from "../../../../../core/module/bs-report-data.model";
+import {BsReportDataModel} from "../../../../../core/model/bs-report-data.model";
 
 @Component({
   selector: 'lib-bs-report-toolbar',
@@ -94,6 +94,7 @@ export class LibBsReportToolbarComponent implements OnInit, OnDestroy{
     this.offcanvasService.open(LibBsReportOptionsOffcanvasComponent, {
       position: 'start',
       backdrop: 'static',
+      panelClass: 'w-25'
     });
   }
 

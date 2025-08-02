@@ -1,7 +1,10 @@
-import {BsReportHeaderModel} from "../../../../mik/lib-bs-report/src/lib/core/module/bs-report-header.model";
+import {
+  BsReportHeader,
+  BsReportHeaderModel
+} from "../../../../mik/lib-bs-report/src/lib/core/model/bs-report-header.model";
 
 
-export const AppColumnConst: BsReportHeaderModel[] = [
+export const AppColumnConst: BsReportHeaderModel[] = BsReportHeader.init( [
   {
     display: 'Наименование',
     value: 'name'
@@ -11,7 +14,7 @@ export const AppColumnConst: BsReportHeaderModel[] = [
   }, {
     display: 'Категория',
     value: 'category'
-  }, {
+  },{
     display: 'Количество',
     value: 'quantity'
   }, {
@@ -21,4 +24,4 @@ export const AppColumnConst: BsReportHeaderModel[] = [
     display: 'Отзывы',
     value: 'reviews'
   }
-]
+])

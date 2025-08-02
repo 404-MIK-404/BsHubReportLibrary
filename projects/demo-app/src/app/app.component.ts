@@ -4,7 +4,7 @@ import {TableModule} from "primeng/table";
 import {Subscription} from "rxjs";
 import {LibBsReportModule} from "../../../mik/lib-bs-report/src/lib/lib-bs-report.module";
 import {LibBsReportService} from "../../../mik/lib-bs-report/src/lib/lib-bs-report.service";
-import {BsReportDataModel} from "../../../mik/lib-bs-report/src/lib/core/module/bs-report-data.model";
+import {BsReportDataModel} from "../../../mik/lib-bs-report/src/lib/core/model/bs-report-data.model";
 import {AppColumnConst} from "../const/column/app.column.const";
 import {CommonModule} from "@angular/common";
 import {LibBsReportSharedModule} from "../../../mik/lib-bs-report/src/lib/shared/lib-bs-report-shared.module";
